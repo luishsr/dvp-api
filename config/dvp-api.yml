@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: dvp-api
+          image: luishsoares/dvp-api
           ports:
             - containerPort: 5000
           env:
