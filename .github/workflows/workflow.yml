@@ -57,10 +57,25 @@ jobs:
       # Deploy to DigitalOCcean Kubernetes.
       - name: Update API deployment file
         run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/database-persistent-volume-claim.yml
+
+      # Deploy to DigitalOCcean Kubernetes.
+      - name: Update API deployment file
         run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/ingress-service.yml
+
+      # Deploy to DigitalOCcean Kubernetes.
+      - name: Update API deployment file
         run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/postgres-cluster-ip-service.yml
+
+      # Deploy to DigitalOCcean Kubernetes.
+      - name: Update API deployment file
         run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/postgres-deployment.yml
+
+      # Deploy to DigitalOCcean Kubernetes.
+      - name: Update API deployment file
         run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/server-cluster-ip-service.yml
+
+      # Deploy to DigitalOCcean Kubernetes.
+      - name: Update API deployment file
         run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/server-deployment.yml
 
       #- name: Update Frontend deployment file
