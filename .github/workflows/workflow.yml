@@ -36,14 +36,6 @@ jobs:
       - name: Build API image
         run: docker build -t ${{ secrets.REGISTRY_NAME }}/dvp-api:$(echo $GITHUB_SHA | head -c7) .
 
-      #- name: Run docker-compose for the API database
-      #  working-directory: ./spring-boot-student-app-api
-      #  run: docker compose up
-
-      #- name: Build Frontend image
-      #  working-directory: ./react-student-management-web-app
-      #  run: docker build -t ${{ secrets.REGISTRY_NAME }}/student-app-client:$(echo $GITHUB_SHA | head -c7) .
-
       - name: Log in to DigitalOcean Container Registry with short-lived credentials
         run: doctl registry login --expiry-seconds 1200
 
@@ -52,30 +44,6 @@ jobs:
 
       #- name: Push Frontend image to DigitalOcean Container Registry
       #  run: docker push ${{ secrets.REGISTRY_NAME }}/student-app-client:$(echo $GITHUB_SHA | head -c7)
-
-      # Deploy to DigitalOCcean Kubernetes.
-      #- name: Update API deployment file
-      #  run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/database-persistent-volume-claim.yml
-
-      # Deploy to DigitalOCcean Kubernetes.
-      #- name: Update API deployment file
-      #  run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/ingress-service.yml
-
-      # Deploy to DigitalOCcean Kubernetes.
-      #- name: Update API deployment file
-      #  run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/postgres-cluster-ip-service.yml
-
-      # Deploy to DigitalOCcean Kubernetes.
-      #- name: Update API deployment file
-      #  run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/postgres-deployment.yml
-
-      # Deploy to DigitalOCcean Kubernetes.
-      #- name: Update API deployment file
-      #  run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/server-cluster-ip-service.yml
-
-      # Deploy to DigitalOCcean Kubernetes.
-      #- name: Update API deployment file
-      #  run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/dvp-api.yml
 
       #- name: Update Frontend deployment file
       #  run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/student-app-client:'${TAG}'|' $GITHUB_WORKSPACE/config/webapp-deployment.yml
