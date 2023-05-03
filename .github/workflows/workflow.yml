@@ -92,11 +92,11 @@ jobs:
       #- name: Reference the secret you just uploaded as an imagePullSecrets
       #  run: "kubectl patch serviceaccount default -p '{\"imagePullSecrets\": [{\"name\": \"registry-<your-registry-name>`\"}]}'"
 
-      - name: Deploy to DigitalOcean Kubernetes
-        run: kubectl apply -f $GITHUB_WORKSPACE/k8s
+      #- name: Deploy to DigitalOcean Kubernetes
+      #  run: kubectl apply -f $GITHUB_WORKSPACE/k8s
 
-      - name: Verify API deployment
-        run: kubectl rollout status deployment/student-app-api
+      #- name: Verify API deployment
+      #  run: kubectl rollout status deployment/student-app-api
 
-      - name: Verify Frontend deployment
-        run: kubectl rollout status deployment/student-app-client
+      # name: Verify Frontend deployment
+      #  run: kubectl rollout status deployment/student-app-client
