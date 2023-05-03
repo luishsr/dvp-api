@@ -36,9 +36,6 @@ jobs:
       - name: Build API image
         run: docker build -t ${{ secrets.REGISTRY_NAME }}/dvp-api:$(echo $GITHUB_SHA | head -c7) .
 
-      - name: Log in to DigitalOcean Container Registry with short-lived credentials
-        run: doctl registry login --expiry-seconds 1200
-
       - uses: actions/checkout@v2
       - name: docker login
         env:
