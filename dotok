@@ -6,4 +6,6 @@ dop_v1_1719a73595cc925c99c1be2432cc1278bfb303dae4e7c5b98f5066f239a39a68
 
 kubectl create secret generic pgpassword --from-literal PGPASSWORD=12345test
 
-##
+## kubectl credential to pull images from docker
+
+kubectl create secret docker-registry my-docker-secret --docker-server=hub.docker.com --docker-username=USER_NAME --docker-password=PASSWORD--docker-email=EMAIL
