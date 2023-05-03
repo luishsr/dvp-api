@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: server-deployment
+  name: dvp-api
 spec:
   replicas: 1
   selector:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: stylerhun/multi-server
+          image: dvp-luishsoares/dvp-api
           ports:
             - containerPort: 5000
           env:

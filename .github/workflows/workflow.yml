@@ -75,7 +75,7 @@ jobs:
 
       # Deploy to DigitalOCcean Kubernetes.
       - name: Update API deployment file
-        run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/server-deployment.yml
+        run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/dvp-api.yml
 
       #- name: Update Frontend deployment file
       #  run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/student-app-client:'${TAG}'|' $GITHUB_WORKSPACE/config/webapp-deployment.yml
