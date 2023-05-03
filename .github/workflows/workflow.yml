@@ -47,7 +47,7 @@ jobs:
         run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
       - name: Push API image to DigitalOcean Container Registry
-        run: docker push ${{ secrets.REGISTRY_NAME }}/dvp-api:$(echo $GITHUB_SHA | head -c7)
+        run: docker push ${{ secrets.REGISTRY_NAME }}/dvp-api
 
       #- name: Push Frontend image to DigitalOcean Container Registry
       #  run: docker push ${{ secrets.REGISTRY_NAME }}/student-app-client:$(echo $GITHUB_SHA | head -c7)
