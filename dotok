@@ -1,1 +1,5 @@
+## secret API token
 dop_v1_1719a73595cc925c99c1be2432cc1278bfb303dae4e7c5b98f5066f239a39a68
+
+## postgres credentials to add to the cluster
+kubectl create secret generic pgpassword --from-literal PGPASSWORD=12345test
