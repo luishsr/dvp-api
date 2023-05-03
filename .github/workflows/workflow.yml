@@ -34,7 +34,7 @@ jobs:
 
       # Build a Docker image of your application in your registry and tag the image with the $GITHUB_SHA.
       - name: Build API image
-        run: docker build -t ${{ secrets.REGISTRY_NAME }}/dvp-api .
+        run: docker build -t ${{ secrets.REGISTRY_NAME }}/dvp-api:$(echo $GITHUB_SHA | head -c7) .
 
       - name: Log in to DigitalOcean Container Registry with short-lived credentials
         run: doctl registry login --expiry-seconds 1200
@@ -47,13 +47,13 @@ jobs:
         run: docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
       - name: Push API image to DigitalOcean Container Registry
-        run: docker push ${{ secrets.REGISTRY_NAME }}/dvp-api
+        run: docker push ${{ secrets.REGISTRY_NAME }}/dvp-api:$(echo $GITHUB_SHA | head -c7)
 
       #- name: Push Frontend image to DigitalOcean Container Registry
       #  run: docker push ${{ secrets.REGISTRY_NAME }}/student-app-client:$(echo $GITHUB_SHA | head -c7)
 
-      #- name: Update Frontend deployment file
-      #  run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/student-app-client:'${TAG}'|' $GITHUB_WORKSPACE/config/webapp-deployment.yml
+      - name: Update API deployment file
+        run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/dvp-api:'${TAG}'|' $GITHUB_WORKSPACE/config/dvp-api.yml
 
       - name: Save DigitalOcean kubeconfig with short-lived credentials
         run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
