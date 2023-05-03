@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: registry.digitalocean.com/dvp-luishsoares/dvp-api
+          image: dvp-api
           ports:
             - containerPort: 5000
           env:

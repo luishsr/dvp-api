@@ -80,8 +80,8 @@ jobs:
       #- name: Update Frontend deployment file
       #  run: TAG=$(echo $GITHUB_SHA | head -c7) && sed -i 's|<IMAGE>|${{ secrets.REGISTRY_NAME }}/student-app-client:'${TAG}'|' $GITHUB_WORKSPACE/config/webapp-deployment.yml
 
-      #- name: Save DigitalOcean kubeconfig with short-lived credentials
-      #  run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
+      - name: Save DigitalOcean kubeconfig with short-lived credentials
+        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 ${{ secrets.CLUSTER_NAME }}
 
       # If you haven't already integrated with your registry and only want workloads in a particular namespace to be able to pull
       # from your registry, uncomment the next two commands.
@@ -91,8 +91,8 @@ jobs:
       #- name: Reference the secret you just uploaded as an imagePullSecrets
       #  run: 'kubectl patch serviceaccount default -p ''{"imagePullSecrets": [{"name": "registry-<your-registry-name>`"}]}'''
 
-      - name: Deploy to DigitalOcean Kubernetes
-        run: kubectl apply -f $GITHUB_WORKSPACE/config
+      #- name: Deploy to DigitalOcean Kubernetes
+      #  run: kubectl apply -f $GITHUB_WORKSPACE/config
 
       - name: Verify API deployment
         run: kubectl rollout status deployment/dvp-api
