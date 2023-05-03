@@ -27,10 +27,10 @@ jobs:
         uses: actions/checkout@main
 
       # Install doctl.
-      - name: Install doctl
-        uses: digitalocean/action-doctl@v2
-        with:
-          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      #- name: Install doctl
+      #  uses: digitalocean/action-doctl@v2
+      #  with:
+      #    token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
       # Build a Docker image of your application in your registry and tag the image with the $GITHUB_SHA.
       - name: Build API image
